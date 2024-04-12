@@ -1,16 +1,22 @@
 function addValues(value1, value2) {
     if(
       (typeof value1 === 'number' && typeof value2 === 'number') ||
-      (typeof value1 === 'bigint' && typeof value2 === 'bigint') ||
-      (typeof value1 === 'boolean' && typeof value2 === 'boolean')
+      (typeof value1 === 'bigint' && typeof value2 === 'bigint') 
     ){
-      return value1 + value2
+      const result = value1 + value2 
+      if (isNaN(result) || !isFinite(result))
+        throw new Error(`NaN or Infinite output!`)
+      else 
+        return result
     }else if (
       (typeof value1 === 'string' && typeof value2 === 'string') 
     ){
       return value1.concat(value2) 
-    } 
-    else {
+    } else if (
+      (typeof value1 === 'boolean' && typeof value2 === 'boolean')
+    ){
+      return value1 || value2
+    }else {
       throw new Error(`cannot perform addition for arguments type : ${typeof value1}, ${typeof value2}`)
     }
   }
@@ -29,37 +35,45 @@ function stringifyValue(value1) {
     return typeof value1 === 'object' ? JSON.stringify(value1) : value1.toString()   
 }
 
-
-
 function convertToNumber(value1) {
+  let result;
+
     if (typeof value1 === "boolean") {
-      return Number(value1)
+      result = Number(value1)
     } else if (typeof value1 === "number") {
-      return value1;
+      result = value1
     } else if (typeof value1 === "string") {
-      return parseFloat(value1);
+      result = parseFloat(value1);
     } else {
         throw new Error(`cannot convert ${typeof value1} to number!`);
     }
+
+    if (isNaN(result) || !isFinite(result))
+      throw new Error('result of conversion is NaN or Infinity!')
+    else 
+      return result
+    
 }
 
-
-
 function coerceToType(value1, type) {
-    if (type === "boolean") {
-      return convertToBoolean(value1);
-    } else if (type === "string") {
-      return stringifyValue(value1);
-    } else if (type === "number") {
-      return convertToNumber(value1);
-    }else if (type === "bigint"){
-      return convertToBigint(value1)
-    }
 
-    else {
+  switch(type){
+
+    case 'boolean':
+      return convertToBoolean(value1);
+
+    case 'string':
+      return stringifyValue(value1);
+      
+    case 'number':
+      return convertToNumber(value1);
+    
+    case 'bigint':
+      return convertToBigint(value1)
+
+    default :
       throw new Error("unsupported type for coercion.");
-    }
-  }
+  }}
 
  /* optional */
 
@@ -89,8 +103,22 @@ function convertArrayToObject(value1){
   }
 }
 
+function cloneObject(value1){
 
-console.log(convertArrayToObject([1,23,4]))
+  if (typeof value1 !== 'object' || value1 === null) {
+    return value1; 
+  }
+
+  let clonedObj = Array.isArray(value1) ? [] : {};
+
+  for (let key in value1) {
+        clonedObj[key] = cloneObject(value1[key]);
+  }
+  return clonedObj;
+}
+
+
+
 export default   {
     addValues,
     invertBoolean,
@@ -98,5 +126,6 @@ export default   {
     convertToNumber,
     coerceToType,
     convertToBoolean,
-    convertArrayToObject
+    convertArrayToObject,
+    cloneObject
 }
