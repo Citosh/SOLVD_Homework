@@ -73,7 +73,8 @@ function coerceToType(value1, type) {
 
     default :
       throw new Error("unsupported type for coercion.");
-  }}
+  }
+}
 
  /* optional */
 
