@@ -13,16 +13,54 @@ function calculateTotalPrice(products) {
 } 
 
 
-// Task 2 
+// Task 2  done
 
-// const object = {firstName : 'tyoma', lastName : 'chaplinskyi'}
 
-// const concatNames = obj =>  `${obj.firstName} ${obj.lastName}`
+const getName = (name, obj) => obj[name]  
+const concatNames = (firstName, lastName) => `${firstName} ${lastName}`
 
-// const compose = (fn1) => (input) => (fn1(input))
+ function getfullName(person){
+    const firstName = getName('firstName', person)
+    const lastName = getName('lastName', person)
+    return fullName = concatNames(firstName, lastName)
+}
+const person = {firstName: 'Artem', lastName: 'Chaplinskyi'}
 
-    
-// const getFullName = (collection) => compose(concatNames)(collection)
+//console.log(getfullName(person))
+
+
+const splitString = str => str.split(' ')
+const sortArr = arr => arr.sort()
+const getUnique = arr => new Set(arr)
+const compose = (...fns) => arg => fns.reduce((acc, fn) => fn(acc), arg);
+
+
+const filterUniqueWords = compose(splitString, sortArr,getUnique ) 
+
+//console.log(filterUniqueWords('hello world hello world'))
+
+const students = [
+    {
+      name: "artem",
+      grades: [98, 78, 79, 85, 90],
+    },
+    {
+      name: "sasha",
+      grades: [100, 100, 99, 75, 65],
+    },
+    {
+      name: "vadim",
+      grades: [79, 82, 82, 62, 66],
+    },
+  ];
+
+const getGrades = students => students.flatMap( value => value.grades)
+const getEverage = grades => grades.reduce((sum, grade) => sum + grade, 0) /grades.length;
+
+const getAverageGrade = compose(getGrades, getEverage) // compose from previous minitask (line 35)
+
+//console.log(getAverageGrade(students))
+
 
 
 // Task 3 done
