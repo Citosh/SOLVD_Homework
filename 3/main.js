@@ -27,17 +27,16 @@ const concatNames = (firstName, lastName) => `${firstName} ${lastName}`
 const person = {firstName: 'Artem', lastName: 'Chaplinskyi'}
 
 //console.log(getfullName(person))
-
-
-const splitString = str => str.split(' ')
+const lowerCase = str => str.toLowerCase()
+const extractWords = str => str.match(/[a-z]+/g)
 const sortArr = arr => arr.sort()
 const getUnique = arr => new Set(arr)
 const compose = (...fns) => arg => fns.reduce((acc, fn) => fn(acc), arg);
 
 
-const filterUniqueWords = compose(splitString, sortArr,getUnique ) 
+const filterUniqueWords = compose(lowerCase, extractWords, sortArr, getUnique ) 
 
-//console.log(filterUniqueWords('hello world hello world'))
+console.log(filterUniqueWords('hello Hello helLo !!!'))
 
 const students = [
     {
