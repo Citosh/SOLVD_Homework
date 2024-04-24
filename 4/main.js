@@ -7,9 +7,12 @@ const person = {
   age: 30,
   email: "john.doe@example.com",
   updateInfo: function(newInfo) {
+ 
     Object.keys(newInfo).forEach(key => {
-      if (this.hasOwnProperty(key) && Object.getOwnPropertyDescriptor(this, key).writable) {
-        Object.assign(this, newInfo);
+      if (this.hasOwnProperty(key)) {
+        Object.defineProperty(this, key,{  
+          value: newInfo[key]
+        });
       }
     })
   }
@@ -30,7 +33,8 @@ Object.defineProperty(person, 'address', {
   enumerable: false
 })
 
-// person.updateInfo({address : {street : "street", home: 0}})
+
+// person.updateInfo({firstName: 'Jane', age: 1})
 // console.log(person)
 
 
@@ -188,10 +192,10 @@ const obj = {
   }
 };
 
-obj.circular = obj
+// obj.circular = obj
 
-const clonedObj = deepCloneObject(obj);
-console.log(clonedObj);
+// const clonedObj = deepCloneObject(obj);
+// console.log(clonedObj);
 
 
 // Task 7
