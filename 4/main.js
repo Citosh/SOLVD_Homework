@@ -154,22 +154,44 @@ function logCallback(property, method){
 // Task 6
 
 
-function deepCloneObject(object){
-  
-  if (typeof object !== 'object' || object === null) {
-    return object; 
+function deepCloneObject(obj, clonedObjects = {}) {
+  if (Object(obj) !== obj || obj === null) {
+      return obj
   }
-  
-  let clonedObj = Array.isArray(object) ? [] : {};
-  
-  Object.keys(object).forEach(key =>{
-    clonedObj[key] = createImmutableObject(object[key])
-  })
-  return clonedObj;
+  if (clonedObjects[obj]) {
+      return clonedObjects[obj];
+  }
+
+  let clone
+
+  if (Array.isArray(obj)) {
+      clone = []
+      clonedObjects[obj] = clone
+      obj.forEach((item, index) => {
+          clone[index] = deepCloneObject(item, clonedObjects)
+      })
+  } else {
+      clone = {}
+      clonedObjects[obj] = clone
+      Object.keys(obj).forEach(key => {
+          clone[key] = deepCloneObject(obj[key], clonedObjects)
+      })
+  }
+  return clone
 }
 
-// const deepClonePerson = deepCloneObject(person)
-// console.log(deepClonePerson)
+const obj = {
+  a: 1,
+  b: {
+      c: 2,
+      d: [3, 4, { e: 5 }]
+  }
+};
+
+obj.circular = obj
+
+const clonedObj = deepCloneObject(obj);
+console.log(clonedObj);
 
 
 // Task 7
@@ -197,6 +219,6 @@ const personSchema = {
   email: { type: "string", required: true },
 }
 
-console.log(validateObject(person, personSchema))
+// console.log(validateObject(person, personSchema))
 
 
