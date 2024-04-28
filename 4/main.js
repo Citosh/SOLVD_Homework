@@ -34,7 +34,9 @@ Object.defineProperty(person, 'address', {
 })
 
 
-// person.updateInfo({firstName: 'Jane', age: 1})
+// person.age = 40
+// console.log(person)
+// person.updateInfo({firstName: 'Jane', age: 31})
 // console.log(person)
 
 
