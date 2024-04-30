@@ -59,25 +59,24 @@ function customShuffle(array) {
 //Task 4
 
 function getArrayIntersection(array, brray) {
-    const intersec = [];
-    const map = {};
+    const intersec = []
+    const map = {}
 
     brray.forEach(item => {
         map[item] = (map[item] || 0) + 1;
-    });
-    console.log(map)
+    })
     array.forEach(item => {
         if (map[item] && map[item] > 0) {
-            intersec.push(item);
-            map[item]--;
+            intersec.push(item)
+            map[item]--
         }
-    });
-    
-    return intersec;
+    })
+
+    return intersec
 }
 
-const a = [1, 2, 3, 4, 5, 2, 'a'];
-const b = ['a', 'b', 'c', 2, 'd', 'c', 3];
+const a = [1, 2, 3, 4, 5, 2, 'a',2];
+const b = ['a', 'b', 'c', 2, 'd', 'c', 3,2,2];
 console.log(getArrayIntersection(a, b)); // Output: [2, 'a', 3]
 
 
