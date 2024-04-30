@@ -26,8 +26,8 @@ const arr1 = [
 ];
 const arr2 = [1, 2, 'a', 'b', 2, 'b', 3];
 
-console.log(customFilterUnique(arr1, obj => obj.name)); // should return [{id: 1, name: 'test'}, {id: 3, boo: 3}]
-console.log(customFilterUnique(arr2, obj => obj)); // should return [1, 'a', 3]
+// console.log(customFilterUnique(arr1, obj => obj.id)); // should return [{id: 1, name: 'test'}, {id: 3, boo: 3}]
+// console.log(customFilterUnique(arr2, obj => obj)); // should return [1, 'a', 3]
 
 
 
@@ -58,12 +58,29 @@ function customShuffle(array) {
 // console.log( customShuffle([1,2,3,4,5]))
 //Task 4
 
-
 function getArrayIntersection(array, brray) {
-    return array.filter((item) => brray.includes(item))
+    const intersec = [];
+    const map = {};
+
+    brray.forEach(item => {
+        map[item] = (map[item] || 0) + 1;
+    });
+    console.log(map)
+    array.forEach(item => {
+        if (map[item] && map[item] > 0) {
+            intersec.push(item);
+            map[item]--;
+        }
+    });
+    
+    return intersec;
 }
 
-// console.log(getArrayIntersection([1,2,3,4], [2,3,4,5]))
+const a = [1, 2, 3, 4, 5, 2, 'a'];
+const b = ['a', 'b', 'c', 2, 'd', 'c', 3];
+console.log(getArrayIntersection(a, b)); // Output: [2, 'a', 3]
+
+
 
 function getArrayUnion(array, brray){
     return Array.from(new Set(array.concat(brray)))
