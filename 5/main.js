@@ -1,26 +1,35 @@
 //Task 1
 
-function customFilterUnique(array, callback){
+function customFilterUnique(array, callback) {
+    const uniqueElements = {};
+    const uniqueKeys = {};
 
-    const filtered = callback(array)
-    return Array.from(new Set(filtered))
-} 
+    array.forEach(element => {
+        const key = callback(element);
 
-function getBiggerThanZero(arr){
-    return arr.filter((item) => item > 0 )
+        if (!uniqueKeys[key]) { 
+            uniqueKeys[key] = true;
+            uniqueElements[key] = element;
+        } else {
+            delete uniqueElements[key]
+        }
+    });
+
+    return Object.values(uniqueElements)
 }
 
-const articles = [
-    {ID : 45, name: 'artem', article: 'advanced array filtering'},
-    {ID : 45, name: 'artem', article: 'object property validation'},
-    {ID : 48, name: 'carlo', article: 'object deep cloning'},
-    {ID : 51, name: 'lissandra', article: 'array shuffling'}
-]
+const arr1 = [
+    { id: 1, name: "test" },
+    { id: 2, name: "foo" },
+    { id: 3, boo: 3 },
+    { id: 2, isAdmin: false }
+];
+const arr2 = [1, 2, 'a', 'b', 2, 'b', 3];
 
-const getStudentsID = array => (array.filter(item => item.ID < 50 && (/^a/gi).test(item.article))).map(item => item.ID)
+console.log(customFilterUnique(arr1, obj => obj.name)); // should return [{id: 1, name: 'test'}, {id: 3, boo: 3}]
+console.log(customFilterUnique(arr2, obj => obj)); // should return [1, 'a', 3]
 
-// console.log(customFilterUnique([1,2,-1,-2,1,1,1], getBiggerThanZero))
-// console.log(customFilterUnique(articles, getStudentsID))
+
 
 //Task 2
 
@@ -60,7 +69,7 @@ function getArrayUnion(array, brray){
     return Array.from(new Set(array.concat(brray)))
 }
 
-console.log(getArrayUnion([1,2,3,4],[3,4,5,6]))
+// console.log(getArrayUnion([1,2,3,4],[3,4,5,6]))
 
 
 //Task 1
@@ -73,5 +82,5 @@ function measureArrayPerformance(array, fn){
 
 const customMap = array => array.map(item => item)
 
-measureArrayPerformance([1,2,3,4],customShuffle)
-measureArrayPerformance([1,2,3,4], customMap)
+// measureArrayPerformance([1,2,3,4],customShuffle)
+// measureArrayPerformance([1,2,3,4], customMap)
