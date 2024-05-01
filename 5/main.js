@@ -65,6 +65,7 @@ function getArrayIntersection(array, brray) {
     brray.forEach(item => {
         map[item] = (map[item] || 0) + 1;
     })
+    console.log(map)
     array.forEach(item => {
         if (map[item] && map[item] > 0) {
             intersec.push(item)
@@ -75,8 +76,8 @@ function getArrayIntersection(array, brray) {
     return intersec
 }
 
-const a = [1, 2, 3, 4, 5, 2, 'a',2];
-const b = ['a', 'b', 'c', 2, 'd', 'c', 3,2,2];
+const a = [1, 2, 3, 4, 5, 2, 'a'];
+const b = ['a', 'b', 'c', 2, 'd', 'c', 3];
 console.log(getArrayIntersection(a, b)); // Output: [2, 'a', 3]
 
 
@@ -97,6 +98,9 @@ function measureArrayPerformance(array, fn){
 }
 
 const customMap = array => array.map(item => item)
-
-// measureArrayPerformance([1,2,3,4],customShuffle)
-// measureArrayPerformance([1,2,3,4], customMap)
+const customfilter = array => array.filter(item => item)
+const customReduce = array => array.reduce(item => item)
+measureArrayPerformance([1,2,3,4],customShuffle)
+measureArrayPerformance([1,2,3,4], customMap)
+measureArrayPerformance([1,2,3,4], customfilter)
+measureArrayPerformance([1,2,3,4], customReduce)
