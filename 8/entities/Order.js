@@ -1,9 +1,4 @@
 
-// Class Order represents an order of books made by a user in the bookstore.
-// Methods:
-// constructor() receives 2 arguments: User class literal, Book class literal and creates context field totalPrice that was calculated by the calculateTotalPrice() method.
-// calculateTotalPrice(): doesn't receive any arguments, calculates and returns the total price of books in the books array using the price field.
-
 export default class Order {
     constructor(user, books) {
         this._user = user;

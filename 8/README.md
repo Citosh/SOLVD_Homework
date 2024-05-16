@@ -1,68 +1,116 @@
-# Homework 8
+# Bookstore Documentation
 
-### Task
+## Classes
 
-Design and implement an object-oriented program in JavaScript to simulate the functioning of an online bookstore. This assignment will test your understanding of classes, encapsulation, inheritance, and polymorphism.
+### Book
 
-### **Part 1: Class Design**
+Represents a generic book.
 
-1. **Book Class**: Create a class called `Book` to represent individual books. Each book should have properties like title, author, ISBN, price, and availability.
-2. **User Class**: Create a class called `User` to represent users of the bookstore. Users should have properties like name, email, and a unique user ID.
-3. **Cart Class**: Design a class called `Cart` to simulate a shopping cart. It should have methods to add books, remove books, and calculate the total price of the books in the cart.
-4. **Order Class**: Create an `Order` class to represent a user's order. It should include information about the user, the books ordered, and the total price.
+#### Properties
 
-### **Part 2: Implementation**
+- `title` (string): The title of the book.
+- `author` (string): The author of the book.
+- `ISBN` (string): The ISBN (International Standard Book Number) of the book.
+- `price` (number): The price of the book.
+- `availability` (boolean): Indicates whether the book is available or not.
 
-1. **Create Objects**: Instantiate multiple `Book` objects, representing different books available in the bookstore. Also, create a few `User` objects.
-2. **Add Books to Cart**: Simulate users adding books to their cart by creating instances of the `Cart` class and using its methods.
-3. **Place Orders**: Implement the process of placing an order. Users should be able to create instances of the `Order` class, specifying the books they want to purchase.
+#### Methods
 
-### **Part 3: Demonstration**
+- `constructor(title, author, ISBN, price, availability)`: Initializes a new Book instance with the provided properties.
 
-1. **Create a Scenario**: Design a scenario where users browse books, add them to their carts, and place orders. Simulate interactions between users, carts, and orders.
-2. **Interaction**: Demonstrate how objects of different classes interact with each other. For example, a user interacts with a cart, and a cart interacts with orders.
-3. **Polymorphism**: Utilize polymorphism by treating different types of books (e.g., fiction, non-fiction) uniformly when users add them to the cart.
+### FictionBook
 
-### **Part 4: Documentation**
+Represents a fictional book, inherits from Book.
 
-1. **Documentation**: Provide clear and concise comments and documentation for your code. Explain the purpose of each class, method, and property. Describe the interaction between different objects and how encapsulation is maintained.
+#### Properties
 
-### **Submission**
+- Inherits properties from Book class.
+- `genre` (string): The genre of the fiction book.
 
-Submit your JavaScript program along with detailed documentation and comments that explain your code. Ensure that your code is well-structured and adheres to best practices in object-oriented programming.
+#### Methods
 
-### **Example**
+- `constructor(title, author, ISBN, price, availability, genre)`: Initializes a new FictionBook instance with the provided properties.
 
-Here's a simplified example structure to give you an idea of what your code might look like:
+### NonFictionBook
 
-```jsx
-class Book {
-  constructor(title, author, isbn, price, availability) {
-    // Properties and methods...
-  }
-}
+Represents a non-fictional book, inherits from Book.
 
-class User {
-  constructor(name, email, userId) {
-    // Properties and methods...
-  }
-}
+#### Properties
 
-class Cart {
-  constructor(user) {
-    // Properties and methods...
-  }
-}
+- Inherits properties from Book class.
+- `topic` (string): The topic of the non-fiction book.
 
-class Order {
-  constructor(user, books) {
-    // Properties and methods...
-  }
-}
+#### Methods
 
-// Instantiate objects and simulate bookstore interactions...
-```
+- `constructor(title, author, ISBN, price, availability, topic)`: Initializes a new NonFictionBook instance with the provided properties.
 
-### **Bonus (Optional)**
 
-Implement additional features such as searching for books, applying discounts, handling payments, or integrating a database to store book and user information.
+### Textbook
+
+Represents a textbook, inherits from Book.
+
+#### Properties
+
+- Inherits properties from Book class.
+- `subject` (string): The subject of the textbook.
+
+#### Methods
+
+- `constructor(title, author, ISBN, price, availability, subject)`: Initializes a new Textbook instance with the provided properties.
+
+
+### Cart
+
+Represents a shopping cart for storing books.
+
+#### Properties
+
+- `books` (array): An array of books in the cart.
+
+#### Methods
+
+- `constructor()`: Initializes a new Cart instance with an empty array of books.
+- `addBook(book)`: Adds a book to the cart if it's available.
+- `removeBook(ISBN)`: Removes a book from the cart by its ISBN.
+- `calculateTotal()`: Calculates the total price of all books in the cart.
+- `clearCart()`: Removes all books from the cart.
+
+### Order
+
+Represents an order made by a user.
+
+#### Properties
+
+- `user` (User): The user who made the order.
+- `books` (array): An array of books in the order.
+- `totalPrice` (number): The total price of the order.
+
+#### Methods
+
+- `constructor(user, books)`: Initializes a new Order instance with the provided user and array of books.
+- `printOrderDetails()`: Prints the details of the order including user information, books, and total price.
+
+### User
+
+Represents a user of the bookstore.
+
+#### Properties
+
+- `name` (string): The name of the user.
+- `email` (string): The email address of the user.
+- `userID` (number): The unique identifier of the user.
+- `cart` (Cart): The shopping cart of the user.
+
+#### Methods
+
+- `constructor(name, email)`: Initializes a new User instance with the provided name and email.
+- `createOrder()`: Creates a new order for the user based on the books in their cart.
+
+## Interactions
+
+- Users can add books to their shopping carts.
+- Users can remove books from their shopping carts.
+- Users can create orders from the books in their shopping carts.
+- Orders contain user information, book details, and total price.
+- The total price of an order is calculated based on the prices of the books in the order.
+

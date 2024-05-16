@@ -1,8 +1,5 @@
-// Class Book represents a book.
-// Methods:
-// constructor() receives 5 arguments: string title, string author, integer isbn, float price, boolean availability.
 
-export default class Book {
+class Book {
     constructor(title, author, ISBN, price, availability) {
         this._title = title;
         this._author = author;
@@ -50,4 +47,57 @@ export default class Book {
     set availability(newAvailability) {
         this._availability = newAvailability;
     }
+}
+
+class FictionBook extends Book {
+    constructor(title, author, ISBN, price, availability, genre) {
+        super(title, author, ISBN, price, availability);
+        this._genre = genre;
+    }
+
+    get genre() {
+        return this._genre;
+    }
+
+    set genre(newGenre) {
+        this._genre = newGenre;
+    }
+}
+
+class NonFictionBook extends Book {
+    constructor(title, author, ISBN, price, availability, topic) {
+        super(title, author, ISBN, price, availability);
+        this._topic = topic;
+    }
+
+    get topic() {
+        return this._topic;
+    }
+
+    set topic(newTopic) {
+        this._topic = newTopic;
+    }
+}
+
+class Textbook extends Book {
+    constructor(title, author, ISBN, price, availability, subject) {
+        super(title, author, ISBN, price, availability);
+        this._subject = subject;
+    }
+
+    get subject() {
+        return this._subject;
+    }
+
+    set subject(newSubject) {
+        this._subject = newSubject;
+    }
+}
+
+
+export {
+    Book, 
+    FictionBook,
+    NonFictionBook,
+    Textbook
 }
