@@ -1,4 +1,4 @@
-# `Homework solutions links`
+# Homework solutions links
 (*Task names are solution links*)
 
 ### [Homework 1: String Arithmetic Operations](./1/) 
