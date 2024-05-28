@@ -1,12 +1,12 @@
 # `Here is links to my homeworks`
 
-### Homework 1: String Arithmetic Operations 
-#### Link    - https://github.com/Citosh/SOLVD_Homework/tree/main/1
-#### Task    - https://github.com/Citosh/SOLVD_Homework/blob/main/1/README.md
+- ### Homework 1: String Arithmetic Operations 
+- Link    - https://github.com/Citosh/SOLVD_Homework/tree/main/1
+- Task    - https://github.com/Citosh/SOLVD_Homework/blob/main/1/README.md
 
-### Homework 2: Advanced data transformation
-Link- https://github.com/Citosh/SOLVD_Homework/tree/main/2
-Task - https://github.com/Citosh/SOLVD_Homework/blob/main/2/README.md
+ - ### Homework 2: Advanced data transformation
+#### Link- https://github.com/Citosh/SOLVD_Homework/tree/main/2
+#### Task - https://github.com/Citosh/SOLVD_Homework/blob/main/2/README.md
 
 ### Homework 3: FP
 #### Link - https://github.com/Citosh/SOLVD_Homework/tree/main/3
