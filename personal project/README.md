@@ -6,11 +6,13 @@
 2. [Technical requirements](#technical-requirements)
 3. [Base URL](#base-url)
 4. [API Documentation](#implementation-details)
-4.1 [Endpoint api/v2/login](#1-authentication) 
-4.2 [Endpoint api/v1/users](#2-endpoint-apiv2users-) 
-4.3 [Endpoint api/v1/products](#3-endpoint-apiv2products-) 
-4.4 [Endpoint api/v1/orders](0#4-endpoint-apiv2orders-) 
-4.5 [Endpoint api/v1/carts](#5-endpoint-apiv2carts-)
+    4.1 [Endpoint auth/registration](###-1.-endpoint-`auth/registration`) 
+    4.2 [Endpoint auth/login](###-2.-endpoint-`auth/login`) 
+    4.3 [Endpoint user/getproducts](###-3.-endpoint-`user/getproducts`) 
+    4.4 [Endpoint user/getproductbyname](###-4.-endpoint-`user/getproductbyname`) 
+    4.5 [Endpoint user/addtocart](###-5.-endpoint-`user/addtocart`)
+    4.6 [Endpoint user/makepurchase](###-6.-endpoint-`user/makepurchase`)
+    4.7 [Endpoint manager/addproduct](###-7.-Endpoint-`manager/addproduct`)
 5. [Install](#install)
 
 ---
