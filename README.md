@@ -1,6 +1,9 @@
 # Homework solutions links
 (*Task names are solution links*)
 
+### [Personal project](./personal%20project/)
+ - [Documentation](./personal%20project/README.md)
+
 ### [Homework 1: String Arithmetic Operations](./1/) 
 - [Task Description](./1/README.md)
 
@@ -37,4 +40,6 @@
 ### [Homework 11: JSON parser ](./11/)
 - [Documentation](./11/README.md)
 - [Task Description](./11/Task.txt)
+
+
 
